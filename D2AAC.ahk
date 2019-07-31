@@ -90,7 +90,7 @@ Return
 AutoAccept:
 IfWinActive ahk_class SDL_app
 {
-ImageSearch, px, py, 0, 0, A_ScreenWidth, A_ScreenHeight, cfg/accept.png
+ImageSearch, px, py, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 cfg/accept.png
     if Errorlevel = 2
     {
         msgbox, could not counduct the ImageSearch
@@ -102,8 +102,9 @@ ImageSearch, px, py, 0, 0, A_ScreenWidth, A_ScreenHeight, cfg/accept.png
     {
         Blockinput, On
         Sleep, 50
-        SendInput, {Enter}
+        ControlSend, ,{Enter}, ahk_class SDL_app
         Blockinput, Off
+        Msgbox, Game Found!
         Sleep, 300
         Toggle()
     }
